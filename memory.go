@@ -31,9 +31,9 @@ func GetRam() (Ram, error) {
 	}
 
 	ram := Ram{
-		Total:     parseMemValue(lines[0]) / 1024,
-		Free:      parseMemValue(lines[1]) / 1024,
-		Available: parseMemValue(lines[2]) / 1024,
+		Total:     parseMemValue(lines[0]),
+		Free:      parseMemValue(lines[1]),
+		Available: parseMemValue(lines[2]),
 	}
 
 	return ram, nil
@@ -46,7 +46,7 @@ func GetTotalRam() (int, error) {
 		return 0, err
 	}
 
-	return parseMemValue(line) / 1024, nil
+	return parseMemValue(line), nil
 }
 
 // get free ram amount
@@ -56,7 +56,7 @@ func GetFreeRam() (int, error) {
 		return 0, err
 	}
 
-	return parseMemValue(line) / 1024, nil
+	return parseMemValue(line), nil
 }
 
 // get available ram amount
@@ -66,5 +66,5 @@ func GetAvalibleRam() (int, error) {
 		return 0, err
 	}
 
-	return parseMemValue(line) / 1024, nil
+	return parseMemValue(line), nil
 }
